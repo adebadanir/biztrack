@@ -1,4 +1,4 @@
-package com.biztrack.business_expense_tracker.model;
+package com.biztrack.businessexpensetracker.model;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -8,8 +8,8 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "Requests")
-public class Request {
+@Table(name = "Reports")
+public class Report {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
@@ -17,27 +17,23 @@ public class Request {
 
     @ManyToOne
     @JoinColumn(
-            name = "UserID",
+            name = "RequestID",
             nullable = false,
-            foreignKey = @ForeignKey(name = "FK_Requests_User")
+            foreignKey = @ForeignKey(name = "FK_Report_Requests")
     )
-    private User user;
-
-    @Column(name = "Purpose", length = 100, nullable = false)
-    private String purpose;
-
+    private Request request;
 
     @Column(name = "Amount")
     private Double amount;
 
-    @Column(name = "IsReported", columnDefinition = "BIT DEFAULT 0")
-    private Boolean isReported;
+    @Column(name = "RefundAmount")
+    private Double refundAmount;
 
-    @Column(name = "Description")
-    private String description;
+    @Column(name = "RefundReceiptUrl")
+    private String refundReceiptURL;
 
     @ManyToOne
-    @JoinColumn(name = "StatusID", nullable = false, foreignKey = @ForeignKey(name = "FK_Request_Status"))
+    @JoinColumn(name = "StatusID", nullable = false, foreignKey = @ForeignKey(name = "FK_Report_Status"))
     private Status status;
 
     @Column(name = "Comment")
@@ -65,20 +61,12 @@ public class Request {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public Request getRequest() {
+        return request;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public String getPurpose() {
-        return purpose;
-    }
-
-    public void setPurpose(String purpose) {
-        this.purpose = purpose;
+    public void setRequest(Request request) {
+        this.request = request;
     }
 
     public Double getAmount() {
@@ -89,20 +77,20 @@ public class Request {
         this.amount = amount;
     }
 
-    public Boolean getReported() {
-        return isReported;
+    public Double getRefundAmount() {
+        return refundAmount;
     }
 
-    public void setReported(Boolean reported) {
-        isReported = reported;
+    public void setRefundAmount(Double refundAmount) {
+        this.refundAmount = refundAmount;
     }
 
-    public String getDescription() {
-        return description;
+    public String getRefundReceiptURL() {
+        return refundReceiptURL;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setRefundReceiptURL(String refundReceiptURL) {
+        this.refundReceiptURL = refundReceiptURL;
     }
 
     public Status getStatus() {

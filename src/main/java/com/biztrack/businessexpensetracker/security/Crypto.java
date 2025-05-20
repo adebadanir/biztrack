@@ -1,4 +1,4 @@
-package com.biztrack.business_expense_tracker.security;
+package com.biztrack.businessexpensetracker.security;
 
 import org.bouncycastle.crypto.BufferedBlockCipher;
 import org.bouncycastle.crypto.engines.AESLightEngine;

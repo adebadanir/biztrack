@@ -1,6 +1,6 @@
-package com.biztrack.business_expense_tracker.config;
+package com.biztrack.businessexpensetracker.config;
 
-import com.biztrack.business_expense_tracker.security.Crypto;
+import com.biztrack.businessexpensetracker.security.Crypto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.DataSourceBuilder;
